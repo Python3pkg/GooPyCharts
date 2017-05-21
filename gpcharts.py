@@ -258,16 +258,16 @@ def combineData(xdata,ydata,xlabel):
     # if there is a title row, use that title
     if type(ydata[0][0]) is str:
         data = [[xdata[0]] + ydata[0]]
-        for i in xrange(1,len(xdata)):
+        for i in range(1,len(xdata)):
             data.append([xdata[i]]+ydata[i])
     # otherwise, use a default labeling
     else:
         header = [xlabel]
-        for i in xrange(len(ydata[0])):
+        for i in range(len(ydata[0])):
             header.append('data'+str(i+1))
 
         data = [header]
-        for i in xrange(len(xdata)):
+        for i in range(len(xdata)):
             data.append([xdata[i]]+ydata[i])
     
     return data
@@ -370,7 +370,7 @@ class figure:
         if ydata:
             data = combineData(xdata,ydata,self.xlabel)
         else:
-            data = combineData(range(len(xdata)),xdata,self.xlabel)
+            data = combineData(list(range(len(xdata))),xdata,self.xlabel)
 
         #determine log scale parameter
         if logScale:
@@ -417,7 +417,7 @@ class figure:
         if ydata:
             data = combineData(xdata,ydata,self.xlabel)
         else:
-            data = combineData(range(len(xdata)),xdata,self.xlabel)
+            data = combineData(list(range(len(xdata))),xdata,self.xlabel)
 
         #Include other options, supplied by **kwargs
         other = ''
